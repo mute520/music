@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudMusic WebApp</title>
+    <link rel="shortcut icon" href="icons/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>🎵 WebMusic Player</h1>
+        <button class="btn-import" onclick="importFolder()">导入音乐文件夹</button>
+        <input type="file" id="fileInput" webkitdirectory multiple hidden>
+    </div>
+
+    <div class="main-content">
+        <div class="playlist-container">
+            <h2>播放列表</h2>
+            <div id="playlist"></div>
+        </div>
+        <div class="lyrics-container" id="lyricsBox">
+            <h2>歌词</h2>
+            <div id="lyricsContent" class="no-lyrics">暂无歌词</div>
+        </div>
+    </div>
+
+    <div class="player-bar">
+        <div class="now-playing">
+            <div class="song-title" id="currentTitle">未播放</div>
+            <div class="song-artist" id="currentArtist">-</div>
+        </div>
+
+        <div class="player-controls">
+            <div class="buttons">
+                <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+                <button class="ctrl-btn play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+                <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+            </div>
+            <div class="progress-container">
+                <span class="time" id="currentTime">0:00</span>
+                <div class="progress-bar" id="progressBar" onclick="seekAudio(event)">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="time" id="duration">0:00</span>
+            </div>
+        </div>
+
+        <div class="volume-container">
+            <span style="font-size: 16px;">🔊</span>
+            <div class="volume-bar" id="volumeBar" onclick="setVolume(event)">
+                <div class="volume-fill" id="volumeFill" style="width: 80%"></div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
